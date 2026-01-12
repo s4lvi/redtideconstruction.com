@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path) => {
     return location.pathname === path;
   };
 
   return (
-    <header className="header">
+    <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="container">
         <div className="nav-wrapper">
           <Link to="/" className="logo">
             <div className="logo-container">
-              {/* Replace with: <img src="/src/assets/logo.png" alt="Red Tide Construction Co." className="logo-image" /> */}
-              <div className="logo-placeholder">
-                RED TIDE CONSTRUCTION CO.
+              <div className="logo-icon">R</div>
+              <div className="logo-text">
+                <span className="logo-name">Red Tide</span>
+                <span className="logo-tagline">Construction Co.</span>
               </div>
             </div>
           </Link>
@@ -51,6 +61,13 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              to="/contact"
+              className="nav-cta"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Get a Quote
             </Link>
           </nav>
 

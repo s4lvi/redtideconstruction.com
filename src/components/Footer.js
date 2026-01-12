@@ -16,9 +16,9 @@ const Footer = () => {
               and sustainable practices since 2008.
             </p>
             <div className="footer-contact">
-              <p>📞 (313) 555-0199</p>
-              <p>✉️ info@redtideconstruction.com</p>
-              <p>📍 Detroit, Michigan</p>
+              <p>(313) 555-0199</p>
+              <p>info@redtideconstruction.com</p>
+              <p>Detroit, Michigan</p>
             </div>
           </div>
 
@@ -61,7 +61,7 @@ const Footer = () => {
             <div className="footer-legal">
               <a href="/privacy">Privacy Policy</a>
               <a href="/terms">Terms of Service</a>
-              <span>Licensed & Insured</span>
+              <span className="license-badge">Licensed & Insured</span>
             </div>
           </div>
         </div>

@@ -1,47 +1,88 @@
 .cta {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  color: var(--white);
-  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--background-dark);
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  opacity: 0.95;
+}
+
+.cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: 0;
 }
 
 .cta-content {
+  position: relative;
+  z-index: 1;
   max-width: 800px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .cta-title {
   font-family: var(--font-secondary);
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--white);
+  margin-bottom: 20px;
   font-weight: 700;
 }
 
 .cta-description {
   font-family: var(--font-primary);
-  font-size: 1.2rem;
-  font-weight: 300;
-  margin-bottom: 2rem;
-  opacity: 0.95;
-  line-height: 1.6;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  line-height: 1.7;
 }
 
 .cta-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .cta-buttons .btn {
-  font-size: 1.1rem;
-  padding: 15px 35px;
+  font-size: 1rem;
+  padding: 16px 36px;
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.cta-buttons .btn:hover {
+  background-color: var(--background-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .cta-buttons .btn-outline {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
+  background-color: transparent;
+  border: 2px solid var(--white);
   color: var(--white);
-  backdrop-filter: blur(10px);
 }
 
 .cta-buttons .btn-outline:hover {
@@ -51,7 +92,7 @@
 
 @media (max-width: 768px) {
   .cta-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .cta-description {
